@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Hoodies = () => {
+const Shorts = () => {
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -13,7 +13,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -33,7 +33,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -53,7 +53,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -73,7 +73,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -93,7 +93,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -113,7 +113,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -133,7 +133,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -153,7 +153,7 @@ const Hoodies = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-center w-full h-full block"
-                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1640777756_4027965.jpg?format=webp&w=360&dpr=1.5"
+                    src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1659160948_3677118.jpg?format=webp&w=360&dpr=1.5"
                   />
                 </a>
                 <div className="mt-4">
@@ -174,4 +174,4 @@ const Hoodies = () => {
   )
 }
 
-export default Hoodies
+export default Shorts

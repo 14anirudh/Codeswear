@@ -33,14 +33,14 @@ const Navbar = () => {
               <li>Tshirts</li>
             </a>
           </Link>
-          <Link href={"/Mugs"}>
+          <Link href={"/Footwear"}>
             <a>
-              <li>Mugs</li>
+              <li>Footwear</li>
             </a>
           </Link>
-          <Link href={"/Stickers"}>
+          <Link href={"/Shorts"}>
             <a>
-              <li>Stickers</li>
+              <li>Shorts</li>
             </a>
           </Link>
           <Link href={"/Hoodies"}>
@@ -58,7 +58,7 @@ const Navbar = () => {
       </div>
       <div
         ref={ref}
-        className="w-60 h-full z-10 sidebar absolute top-0 right-0 bg-blue-200 py-10 px-6 transform transition-transform translate-x-full"
+        className=" h-full z-10 sidebar absolute top-0 right-0 bg-blue-200 py-10 px-6 transform transition-transform translate-x-full"
       >
         <h2 className="font-bold text-xl">Your cart</h2>
         <span
@@ -87,8 +87,10 @@ const Navbar = () => {
             </div>
           </li>
         </ol>
-        <button className="flex mx-auto text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">Proceed To Buy</button>
-      
+        <div className="flex my-6">
+        <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">Proceed To Buy</button>
+        <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8  focus:outline-none hover:bg-black rounded text-lg">Clear Cart</button>
+        </div>
       </div>
     </div>
   );
