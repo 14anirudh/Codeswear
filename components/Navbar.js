@@ -8,7 +8,8 @@ import {
   AiFillMinusCircle,
 } from "react-icons/ai";
 
-const Navbar = () => {
+const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
+  
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
       ref.current.classList.remove("translate-x-full");
@@ -68,28 +69,34 @@ const Navbar = () => {
           <AiOutlineCloseCircle />
         </span>
         <ol className="list-decimal font-semibold">
-          <li>
-            <div className="item flex my-3">
-              <div className="w-2/3 font-semibold">The Catalyzer</div>
-              <div className="w-1/3 flex items-center justify-center text-lg">
-                <AiFillMinusCircle className="cursor-pointer" /> <span className="mx-2">1</span>
-                <AiFillPlusCircle className="cursor-pointer" />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="item flex my-3">
-              <div className="w-2/3 font-semibold">Shooting Stars</div>
-              <div className="w-1/3 flex items-center justify-center text-lg">
-                <AiFillMinusCircle className="cursor-pointer" /> <span className="mx-2">1</span>
-                <AiFillPlusCircle className="cursor-pointer" />
-              </div>
-            </div>
-          </li>
+          {Object.keys(cart).length === 0 && (
+            <div className="my-4 text-xl mx-1">Your Cart is Empty</div>
+          )}
+          {Object.keys(cart).map((k) => {
+            return (
+              <li key={k}>
+                <div className="item flex my-3">
+                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-1/3 flex items-center justify-center text-lg">
+                    <AiFillMinusCircle onClick={()=>{removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className="cursor-pointer" />
+                    <span className="mx-2">{cart[k].qty}</span>
+                    <AiFillPlusCircle onClick={()=>{addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className="cursor-pointer" />
+                  </div>
+                </div>
+              </li>
+            );
+          })}
         </ol>
         <div className="flex my-6">
-        <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">Proceed To Buy</button>
-        <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8  focus:outline-none hover:bg-black rounded text-lg">Clear Cart</button>
+          <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">
+            Proceed To Buy
+          </button>
+          <button
+            onClick={clearCart}
+            className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8  focus:outline-none hover:bg-black rounded text-lg"
+          >
+            Clear Cart
+          </button>
         </div>
       </div>
     </div>
