@@ -8,7 +8,7 @@ import {
   AiFillMinusCircle,
 } from "react-icons/ai";
 
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
+const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
@@ -21,7 +21,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl">
+    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-white z-10">
       <div className="logo m-2">
         <Link href="/">
           <Image src="/logo.png" width={50} height={50} alt="" />
@@ -59,7 +59,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
       </div>
       <div
         ref={ref}
-        className=" h-full z-10 sidebar absolute top-0 right-0 bg-blue-200 py-10 px-6 transform transition-transform translate-x-full"
+        className={`h-[100vh] sidebar absolute top-0 right-0 bg-blue-200 py-10 px-6 transform transition-transform ${Object.keys(cart).length!==0?`translate-x-0`:`translate-x-full`}`}
       >
         <h2 className="font-bold text-xl">Your cart</h2>
         <span
@@ -88,9 +88,11 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
           })}
         </ol>
         <div className="flex my-6">
+          <Link href="/Checkout">
           <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">
-            Proceed To Buy
+            Checkout
           </button>
+          </Link>
           <button
             onClick={clearCart}
             className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8  focus:outline-none hover:bg-black rounded text-lg"

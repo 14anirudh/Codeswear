@@ -209,6 +209,7 @@ const Slug = ({addToCart}) => {
                   className="px-2 border-2 border-gray-500 rounded w-64"
                   type="text"
                   placeholder="Enter you Pincode"
+                  
                 />
                 <button
                   onClick={checkService}
