@@ -53,7 +53,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       </div>
 
       <div className="cart absolute right-5 top-4 cursor-pointer flex items-center">
-        <Link href="/login"><HiUserCircle className="text-3xl md:text-5xl mx-4" />
+        <Link href="/login"><a><HiUserCircle className="text-3xl md:text-5xl mx-4" /></a>
         </Link>
         <BsCart2 onClick={toggleCart} className="text-2xl md:text-4xl" />
       </div>
