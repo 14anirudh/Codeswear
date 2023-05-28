@@ -11,7 +11,7 @@ const Tshirts = ({ products }) => {
           <div className="flex flex-wrap -m-4">
             {Object.keys(products).map((item) => {
               return (
-                <Link
+                <Link 
                   passhref={true}
                   key={products[item]._id}
                   href={`/Product/${products[item].slug}`}
@@ -59,31 +59,19 @@ const Tshirts = ({ products }) => {
                           </span>
                         )}
                       </div>
-                      <div className="d-flex flex-row">
-                      <div className="mt-1 ">
-                        {" "}
-                        {products[item].color.includes("Red") && (
-                          <button className="p-1 my-1 bg-red-700 rounded-lg w-6 h-6 "></button>
-                        )}
-                      </div>
                       <div className="mt-1">
-                        {" "}
-                        {products[item].color.includes("Blue") && (
-                          <button className="p-1 my-1 bg-blue-700 rounded-lg w-6 h-6 "></button>
+                      {products[item].color.includes("Red") && (
+                          <button className="p-1 my-1 bg-red-700 rounded-lg w-6 h-6 mr-1"></button>
                         )}
-                      </div>
-                      <div className="mt-1">
-                        {" "}
-                        {products[item].color.includes("Black") && (
-                          <button className="p-1 my-1 bg-black rounded-lg w-6 h-6 "></button>
+                      {products[item].color.includes("Blue") && (
+                          <button className="p-1 my-1 bg-blue-700 rounded-lg w-6 h-6 mr-1"></button>
                         )}
-                      </div>
-                      <div className="mt-1">
-                        {" "}
-                        {products[item].color.includes("Green") && (
-                          <button className="p-1 my-1 bg-green-700 rounded-lg w-6 h-6 "></button>
+                      {products[item].color.includes("Black") && (
+                          <button className="p-1 my-1 bg-black rounded-lg w-6 h-6 mr-1"></button>
                         )}
-                      </div>
+                      {products[item].color.includes("Green") && (
+                          <button className="p-1 my-1 bg-green-700 rounded-lg w-6 h-6 mr-1"></button>
+                        )}
                       </div>
                     </div>
                   </div>
