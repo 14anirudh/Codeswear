@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,6 +9,12 @@ const Login = () => {
   const router = useRouter();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -101,23 +107,7 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="flex justify-between items-center mb-6">
-                  <div className="form-group form-check">
-                    <div className="flex items-center">
-                      <input
-                        id="remember-me"
-                        name="remember-me"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                      />
-                      <label
-                        htmlFor="remember-me"
-                        className="ml-2 block text- text-gray-900"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-                  </div>
+                <div className="flex justify-end items-end mb-6">
                   <Link href="/forgot">
                     <a
                       href="#!"

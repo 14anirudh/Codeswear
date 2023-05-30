@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BsCart2 } from "react-icons/bs";
@@ -8,8 +8,23 @@ import {
   AiFillMinusCircle,
 } from "react-icons/ai";
 import { HiUserCircle } from "react-icons/hi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+const Navbar = ({
+  user,
+  cart,
+  addToCart,
+  removeFromCart,
+  clearCart,
+  subTotal,
+  logout
+}) => {
+  const [dropDown, setDropDown] = useState(false);
+  const toggleDropDown = () => {
+    setDropDown(!dropDown);
+  };
+   
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
       ref.current.classList.remove("translate-x-full");
@@ -22,10 +37,23 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
   return (
     <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-white z-10">
-      <div className="logo m-2">
+       <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="logo m-2 flex flex-col justify-center items-center">
         <Link href="/">
           <Image src="/logo.png" width={50} height={50} alt="" />
         </Link>
+        <p className="">CodesWear</p>
       </div>
       <div className="nav py-2">
         <ul className="flex items-center space-x-6 font-bold mx-5">
@@ -52,11 +80,44 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
         </ul>
       </div>
 
-      <div className="cart absolute right-5 top-4 cursor-pointer flex items-center">
-        <Link href="/Login"><a><HiUserCircle className="text-3xl md:text-5xl mx-4" /></a>
-        </Link>
+      <div className="cart absolute right-5 top-4 cursor-pointer flex items-center ">
+          {dropDown && (
+            <div
+            className="absolute top-11 right-20 bg-black shadow-xl rounded-md w-32 px-2 py-2">
+              <ul className="flex flex-col items-center space-y-2">
+                
+                <Link href="/Account">
+                  <a>
+                    <li className="text-l text-white">My Account</li>
+                  </a>
+                </Link>
+                <Link href="/Orders">
+                  <a>
+                    <li className="text-l text-white">Orders</li>
+                  </a>
+                </Link>
+
+                <a onClick={logout}>
+                  <li className="text-l text-white">Logout</li>
+                </a>
+              </ul>
+            </div>
+          )}
+          {user.value && <HiUserCircle onClick={toggleDropDown} className=" text-3xl md:text-5xl mx-4" />}
+      
+        {!user.value && (
+          <Link href="/Login">
+            <a>
+              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-indigo-500 border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                Login
+              </button>
+            </a>
+          </Link>
+        )}
+
         <BsCart2 onClick={toggleCart} className="text-2xl md:text-4xl" />
       </div>
+
       <div
         ref={ref}
         className={`h-[100vh] sidebar overflow-y-scroll absolute top-0 right-0 bg-blue-200 py-10 px-6 transform transition-transform ${
@@ -78,7 +139,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-3">
-                  <div className="w-2/3 font-semibold">{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
+                  <div className="w-2/3 font-semibold">
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
+                  </div>
                   <div className="w-1/3 flex items-center justify-center text-lg">
                     <AiFillMinusCircle
                       onClick={() => {

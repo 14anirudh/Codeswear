@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const forgot = () => {
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <div className="flex min-h-full items-center justify-around py-12 px-4 sm:px-6 lg:px-8">
       <div className="md:w-8/12 lg:w-6/12 my-12 md:mb-0">
@@ -50,7 +58,7 @@ const forgot = () => {
           </div>
         </form>
         <p className="text-center text-black my-4">
-        Don&apos;t have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup">
             <a className="border-b border-grey-dark text-blue-600">Sign Up</a>
           </Link>{" "}
