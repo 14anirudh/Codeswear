@@ -1,63 +1,112 @@
 import React from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const signup = () => {
+const SignUp = () => {
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+  const handleChange = (e) => {
+    if (e.target.name === "name") {
+      setName(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    } else if (e.target.name === "email") {
+      setEmail(e.target.value);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formBody = { name, email, password };
+    let res = await fetch("http://localhost:3000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formBody),
+    });
+    let response = await res.json();
+    console.log(response);
+    setName("");
+    setPassword("");
+    setEmail("");
+    toast.success('Signed Up Successfully', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  };
+
   return (
     <div>
-      {/* <!-- component --> */}
       <div className="bg-grey-lighter min-h-screen flex justify-between ">
-        <div className="md:w-8/12 lg:w-6/12 my-12 md:mb-0">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-            className="w-full"
-            alt="Phone image"
-          />
-        </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className=" px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className=" text-3xl text-center">Sign up</h1>
             <p className="text-black my-2 text-center">
               Already have an account?
-              <Link href="/login">
+              <Link href="/Login">
                 <a className="text-blue-600 border-b border-grey-dark ">
                   Log in
                 </a>
               </Link>
             </p>
-            <input
-              type="text"
-              className="block border-b border-grey-light w-full p-3 rounded mb-4"
-              name="fullname"
-              placeholder="Full Name"
-            />
+            <form action="" onSubmit={handleSubmit}>
+              <input
+                onChange={handleChange}
+                value={name}
+                type="text"
+                className="block border-b border-grey-light w-full p-3 rounded mb-4"
+                name="name"
+                placeholder="Name"
+              />
 
-            <input
-              type="text"
-              className="block border-b border-grey-light w-full p-3 rounded mb-4"
-              name="email"
-              placeholder="Email"
-            />
+              <input
+                onChange={handleChange}
+                value={email}
+                type="email"
+                className="block border-b border-grey-light w-full p-3 rounded mb-4"
+                name="email"
+                id="email"
+                placeholder="Email"
+              />
 
-            <input
-              type="password"
-              className="block border-b border-grey-light w-full p-3 rounded mb-4"
-              name="password"
-              placeholder="Password"
-            />
-            <input
-              type="password"
-              className="block border-b border-grey-light w-full p-3 rounded mb-4"
-              name="confirm_password"
-              placeholder="Confirm Password"
-            />
-
-            <button
-              type="submit"
-              className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-green-dark focus:outline-none my-1"
-            >
-              Create Account
-            </button>
-
+              <input
+                onChange={handleChange}
+                value={password}
+                type="password"
+                className="block border-b border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
+              <button
+                type="submit"
+                className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-green-dark focus:outline-none my-1"
+              >
+                Create Account
+              </button>
+            </form>
             <div className="text-center text-sm text-grey-dark mt-4">
               By signing up, you agree to the
               <a
@@ -65,7 +114,7 @@ const signup = () => {
                 href="#"
               >
                 Terms of Service
-              </a>{" "}
+              </a>
               and&nbsp;
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
@@ -81,4 +130,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default SignUp;

@@ -17,14 +17,11 @@ const handler = async (req, res) => {
       });
       await p.save();
     }
-    res.status(200).json({ error: "success" });
+    res.status(200).json({ Success: "success" });
   } else {
     res
       .status(400)
       .json({ error: "this method is not allowed for this route" });
   }
-  let products = await Product.find();
-
-  res.status(200).json({ products });
 };
 export default connectDb(handler);

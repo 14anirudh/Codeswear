@@ -1,25 +1,87 @@
 import React from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
-const login = () => {
+const Login = () => {
+  const router = useRouter();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formBody = { email, password };
+    let res = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formBody),
+    });
+    let response = await res.json();
+    console.log(response);
+
+    setPassword("");
+    setEmail("");
+    if (response.Success) {
+      localStorage.setItem("token", response.token);
+      toast.success("Logged in successfully", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
+    } else {
+      toast.error(response.error, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
+
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <section className="h-screen">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-            <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                className="w-full"
-                alt="Phone image"
-              />
-            </div>
             <div className="md:w-8/12 lg:w-5/12 lg:ml-20 shadow-md p-6">
-              <form>
+              <form method="POST" onSubmit={handleSubmit}>
                 {/* <!-- Email input --> */}
                 <div className="mb-6">
                   <input
-                    type="text"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    value={email}
+                    id="email"
+                    type="email"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Email address"
                   />
@@ -28,6 +90,11 @@ const login = () => {
                 {/* <!-- Password input --> */}
                 <div className="mb-6">
                   <input
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    value={password}
+                    id="password"
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-b border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
@@ -72,7 +139,7 @@ const login = () => {
                 </button>
                 <p className="text-center text-black my-4">
                   Don&apos;t have an account?{" "}
-                  <Link href="/signup">
+                  <Link href="/SignUp">
                     <a className="border-b border-grey-dark text-blue-600">
                       Sign Up
                     </a>
@@ -135,4 +202,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
