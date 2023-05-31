@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 
 const Login = () => {
   const router = useRouter();
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formBody = { email, password };
-    let res = await fetch("http://localhost:3000/api/login", {
+    let res = await fetch(` ${process.env.NEXT_PUBLIC_HOST}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex justify-end items-end mb-6">
-                  <Link href="/forgot">
+                  <Link href="/Forgot">
                     <a
                       href="#!"
                       className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out border-b border-grey-dark"

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const forgot = () => {
+const Forgot = () => {
   const router = useRouter();
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -68,4 +68,4 @@ const forgot = () => {
   );
 };
 
-export default forgot;
+export default Forgot;

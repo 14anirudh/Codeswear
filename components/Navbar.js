@@ -53,7 +53,7 @@ const Navbar = ({
         <Link href="/">
           <Image src="/logo.png" width={50} height={50} alt="" />
         </Link>
-        <p className="">CodesWear</p>
+        <p className="text-bold"></p>
       </div>
       <div className="nav py-2">
         <ul className="flex items-center space-x-6 font-bold mx-5">
@@ -108,7 +108,7 @@ const Navbar = ({
         {!user.value && (
           <Link href="/Login">
             <a>
-              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-indigo-500 border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Login
               </button>
             </a>
