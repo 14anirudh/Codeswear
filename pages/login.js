@@ -14,7 +14,7 @@ const Login = () => {
     if (localStorage.getItem("token")) {
       router.push("/");
     }
-  }, []);
+  }, [router.query]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
