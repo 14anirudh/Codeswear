@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 
 const Forgot = () => {
   const router = useRouter();
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   return (
     <div className="flex min-h-full items-center justify-around py-12 px-4 sm:px-6 lg:px-8">
