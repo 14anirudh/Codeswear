@@ -22,8 +22,9 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
       },
       body: JSON.stringify(data),
     });
-    let txnToken = await a.json();
-    console.log(b);
+    let txnRes = await a.json();
+    console.log(txnRes);
+    let txnToken = txnRes.body.txnToken;
 
     var config = {
       root: "",
@@ -67,8 +68,8 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
       <Script
         type="application/javascript"
         crossorigin="anonymous"
-        src={`${process.env.NEXT_PUBLIC_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
-        onload="onScriptLoad()"
+        src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
+        
       />
 
       <section className="text-gray-600 body-font relative lg:mx-24 md:mx">

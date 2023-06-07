@@ -46,7 +46,7 @@ export default async function handler(req, res) {
           hostname: "securegw.paytm.in",
 
           port: 443,
-          path: ` /theia/api/v1/initiateTransaction?mid=${process.env.NEXT_PUBLIC_PAYTM_MID}&orderId=ORDERID_98765`,
+          path: ` /theia/api/v1/initiateTransaction?mid=${process.env.NEXT_PUBLIC_PAYTM_MID}&orderId={req.body.oid}`,
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default async function handler(req, res) {
 
           post_res.on("end", function () {
             console.log("Response: ", response);
-            resolve(response);
+            resolve(JSON.parse(response).body);
           });
         });
 
