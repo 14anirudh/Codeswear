@@ -98,7 +98,7 @@ function MyApp({ Component, pageProps }) {
         waitingTime={300}
         onLoaderFinished={() => setProgress(0)}
       />
-      {key && <Navbar
+     <Navbar
         logout={logout}
         user={user}
         key={key}
@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         subTotal={subTotal}
-      />  }
+      />  
       <Component
         buyNow={buyNow}
         cart={cart}
