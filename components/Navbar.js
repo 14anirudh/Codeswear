@@ -117,11 +117,11 @@ const Navbar = ({
               </ul>
             </div>
           )}
-          {user.value && (
+          {!user.value && (
             <HiUserCircle className=" text-3xl md:text-5xl mx-4" />
           )}
         </a>
-        {!user.value && (
+        {user.value && (
           <Link href={"/Login"}>
             <a>
               <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
