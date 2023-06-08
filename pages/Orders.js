@@ -4,12 +4,12 @@ import Order from "../models/Order";
 import { useRouter } from "next/router";
 
 const Orders = () => {
-    // const router = useRouter();
-    // useEffect(() => {
-    //     if (localStorage.getItem("token") === null) {
-    //         router.push("/Login");
-    //     }
-    // }, [router.query]);
+     const router = useRouter();
+     useEffect(() => {
+         if (localStorage.getItem("token") === null) {
+             router.push("/Login");
+       }
+    }, [router.query]);
 
   return (
     <div>

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
   const [user, setUser] = useState({ value: null });
-  const [key, setKey] = useState();
+  const [key, setKey] = useState(0);
   const [progress, setProgress] = useState(0)
 
   const router = useRouter();
