@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 
 const Account = () => {
-  const router = useRouter();
- 
-
-  return <div></div>;
+  return <div>
+<p>account</p>
+  </div>;
 };
 
 export default Account;

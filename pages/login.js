@@ -108,7 +108,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex justify-end items-end mb-6">
-                  <Link href="/Forgot">
+                  <Link href={"/Forgot"}>
                     <a
                       href="#!"
                       className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out border-b border-grey-dark"
@@ -129,7 +129,7 @@ const Login = () => {
                 </button>
                 <p className="text-center text-black my-4">
                   Don&apos;t have an account?{" "}
-                  <Link href="/SignUp">
+                  <Link href={"/SignUp"}>
                     <a className="border-b border-grey-dark text-blue-600">
                       Sign Up
                     </a>

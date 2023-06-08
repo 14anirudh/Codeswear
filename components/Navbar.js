@@ -50,7 +50,7 @@ const Navbar = ({
         theme="dark"
       />
       <div className="logo m-2 flex flex-col justify-center items-center">
-        <Link href="/">
+        <Link href={'/'}>
           <Image src="/logo.png" width={50} height={50} alt="" />
         </Link>
         <p className="text-bold"></p>
@@ -86,12 +86,12 @@ const Navbar = ({
             className="absolute top-11 right-20 bg-black shadow-xl rounded-md w-32 px-2 py-2">
               <ul className="flex flex-col items-center space-y-2">
                 
-                <Link href="/Account">
+                <Link href={"/Account"}>
                   <a>
                     <li className="text-l text-white">My Account</li>
                   </a>
                 </Link>
-                <Link href="/Orders">
+                <Link href={"/Orders"}>
                   <a>
                     <li className="text-l text-white">Orders</li>
                   </a>
@@ -106,7 +106,7 @@ const Navbar = ({
           {user.value && <HiUserCircle onClick={toggleDropDown} className=" text-3xl md:text-5xl mx-4" />}
       
         {!user.value && (
-          <Link href="/Login">
+          <Link href={'/Login'}>
             <a>
               <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Login
@@ -177,7 +177,7 @@ const Navbar = ({
           })}
         </ol>
         <div className="flex my-6">
-          <Link href="/Checkout">
+          <Link href={'/Checkout'}>
             <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">
               Checkout
             </button>
