@@ -18,13 +18,13 @@ const Navbar = ({
   removeFromCart,
   clearCart,
   subTotal,
-  logout
+  logout,
 }) => {
   const [dropDown, setDropDown] = useState(false);
   const toggleDropDown = () => {
     setDropDown(!dropDown);
   };
-   
+
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
       ref.current.classList.remove("translate-x-full");
@@ -37,7 +37,7 @@ const Navbar = ({
   const ref = useRef();
   return (
     <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-white z-10">
-       <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -50,7 +50,7 @@ const Navbar = ({
         theme="dark"
       />
       <div className="logo m-2 flex flex-col justify-center items-center">
-        <Link href={'/'}>
+        <Link href={"/"}>
           <Image src="/logo.png" width={50} height={50} alt="" />
         </Link>
         <p className="text-bold"></p>
@@ -81,11 +81,25 @@ const Navbar = ({
       </div>
 
       <div className="cart absolute right-5 top-4 cursor-pointer flex items-center ">
+        <a
+          onMouseOver={() => {
+            setDropDown(true);
+          }}
+          onMouseLeave={() => {
+            setDropDown(false);
+          }}
+        >
           {dropDown && (
             <div
-            className="absolute top-11 right-20 bg-black shadow-xl rounded-md w-32 px-2 py-2">
+              onMouseOver={() => {
+                setDropDown(true);
+              }}
+              onMouseLeave={() => {
+                setDropDown(false);
+              }}
+              className="absolute top-11 right-20 bg-black shadow-xl rounded-md w-32 px-2 py-2"
+            >
               <ul className="flex flex-col items-center space-y-2">
-                
                 <Link href={"/Account"}>
                   <a>
                     <li className="text-l text-white">My Account</li>
@@ -103,10 +117,12 @@ const Navbar = ({
               </ul>
             </div>
           )}
-          {user.value && <HiUserCircle onClick={toggleDropDown} className=" text-3xl md:text-5xl mx-4" />}
-      
+          {user.value && (
+            <HiUserCircle className=" text-3xl md:text-5xl mx-4" />
+          )}
+        </a>
         {!user.value && (
-          <Link href={'/Login'}>
+          <Link href={"/Login"}>
             <a>
               <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Login
@@ -177,7 +193,7 @@ const Navbar = ({
           })}
         </ol>
         <div className="flex my-6">
-          <Link href={'/Checkout'}>
+          <Link href={"/Checkout"}>
             <button className="flex mx-2 text-white bg-black/80 border-0 py-2 px-8 focus:outline-none hover:bg-black rounded text-lg">
               Checkout
             </button>
