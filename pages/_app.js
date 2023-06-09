@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
       setUser({ value: token });
       setKey(Math.random());
     }
-  }, [router.query]);
+  }, [router.events, router.query]);
 
   const logout = () => {
     localStorage.removeItem("token");

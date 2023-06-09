@@ -12,11 +12,11 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     router.push("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  });
 
 
   const handleChange = (e) => {

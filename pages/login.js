@@ -10,11 +10,11 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     router.push("/");
-  //   }
-  // }, [router.query]);
+   useEffect(() => {
+     if (localStorage.getItem("token")) {
+       router.push("/");
+     }
+   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();

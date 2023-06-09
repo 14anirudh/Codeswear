@@ -9,7 +9,7 @@ const Orders = () => {
          if (localStorage.getItem("token") === null) {
              router.push("/Login");
        }
-    }, [router.query]);
+    }, [router, router.query]);
 
   return (
     <div>
