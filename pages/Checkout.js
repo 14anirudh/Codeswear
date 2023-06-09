@@ -10,55 +10,55 @@ import Head from "next/head";
 import Script from "next/script";
 
 const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
-  const initiatePayment = async () => {
-    let oid = Math.floor(Math.random() * Date.now());
+  // const initiatePayment = async () => {
+  //   let oid = Math.floor(Math.random() * Date.now());
 
-    const data = { cart, subTotal ,oid,email:"email"};
-    //getting transaction token from server
-    let a = await fetch(` ${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    let txnRes = await a.json();
-    console.log(txnRes);
-    let txnToken = txnRes.body.txnToken;
+  //   const data = { cart, subTotal ,oid,email:"email"};
+  //   //getting transaction token from server
+  //   let a = await fetch(` ${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   let txnRes = await a.json();
+  //   console.log(txnRes);
+  //   let txnToken = txnRes.body.txnToken;
 
-    var config = {
-      root: "",
-      flow: "DEFAULT",
-      data: {
-        orderId: oid /* update order id */,
-        token: txnToken /* update token value */,
-        tokenType: "TXN_TOKEN",
-        amount: subTotal /* update amount */,
-      },
-      handler: {
-        notifyMerchant: function (eventName, data) {
-          console.log("notifyMerchant handler function called");
-          console.log("eventName => ", eventName);
-          console.log("data => ", data);
-        },
-      },
-    };
-    if (window.Paytm && window.Paytm.CheckoutJS) {
-      window.Paytm.CheckoutJS.init(config)
-        .then(function onSuccess() {
-          // after successfully updating configuration, invoke JS Checkout
+  //   var config = {
+  //     root: "",
+  //     flow: "DEFAULT",
+  //     data: {
+  //       orderId: oid /* update order id */,
+  //       token: txnToken /* update token value */,
+  //       tokenType: "TXN_TOKEN",
+  //       amount: subTotal /* update amount */,
+  //     },
+  //     handler: {
+  //       notifyMerchant: function (eventName, data) {
+  //         console.log("notifyMerchant handler function called");
+  //         console.log("eventName => ", eventName);
+  //         console.log("data => ", data);
+  //       },
+  //     },
+  //   };
+  //   if (window.Paytm && window.Paytm.CheckoutJS) {
+  //     window.Paytm.CheckoutJS.init(config)
+  //       .then(function onSuccess() {
+  //         // after successfully updating configuration, invoke JS Checkout
 
-          window.Paytm.CheckoutJS.invoke();
-        })
-        .catch(function onError(error) {
-          console.log("error => ", error);
-        });
-    }
-  };
+  //         window.Paytm.CheckoutJS.invoke();
+  //       })
+  //       .catch(function onError(error) {
+  //         console.log("error => ", error);
+  //       });
+  //   }
+  // };
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <meta
           name="viewport"
           content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
@@ -70,7 +70,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
         crossorigin="anonymous"
         src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
         
-      />
+      /> */}
 
       <section className="text-gray-600 body-font relative lg:mx-24 md:mx">
         <div className="container px-5 py-12 mx-auto">
@@ -169,7 +169,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             2.Cart Items
           </h2>
           <span className="subtotal sm:text-xl text-xl font-medium title-font mb-4 text-gray-900 mt-12 ml-2">
-            Subtotal : ${subTotal}
+            Subtotal : &#8377;{subTotal}
           </span>
           <div className="sidebar px-6 ">
             <ol className="list-decimal font-semibold">
@@ -220,7 +220,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             </ol>
             <div className="p-2 w-full"></div>
             <button
-              onClick={initiatePayment}
+              
               className=" text-white bg-indigo-500 border-0 py-2 px-8 hover:bg-indigo-600 rounded text-lg my-4 -mx-4"
             >
               Proceed to Pay &#8377;{subTotal}
