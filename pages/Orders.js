@@ -7,7 +7,7 @@ const Orders = () => {
      const router = useRouter();
      useEffect(() => {
          if (localStorage.getItem("token") === null) {
-             router.push("/Login");
+             router.push("/login");
        }
     }, [router, router.query]);
 

@@ -76,7 +76,7 @@ const SignUp = () => {
             <h1 className=" text-3xl text-center">Sign up</h1>
             <p className="text-black my-2 text-center">
               Already have an account?
-              <Link href={"/Login"}>
+              <Link href={"/login"}>
                 <a className="text-blue-600 border-b border-grey-dark ">
                   Log in
                 </a>

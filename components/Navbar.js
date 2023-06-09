@@ -72,7 +72,7 @@ const Navbar = ({
               <li>Shorts</li>
             </a>
           </Link>
-          <Link href={"/Hoodies"}>
+          <Link href={"/hoodies"}>
             <a>
               <li>Hoodies</li>
             </a>
@@ -122,7 +122,7 @@ const Navbar = ({
           )}
         </a>
         {!user.value && (
-          <Link href={"/Login"}>
+          <Link href={"/login"}>
             <a>
               <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Login
