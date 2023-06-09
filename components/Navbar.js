@@ -59,22 +59,22 @@ const Navbar = ({
         <ul className="flex items-center space-x-6 font-bold mx-5">
           <Link href={"/Tshirts"}>
             <a>
-              <li>Tshirts</li>
+              <li className="text-l">Tshirts</li>
             </a>
           </Link>
           <Link href={"/Footwear"}>
             <a>
-              <li>Footwear</li>
+              <li className="text-l">Footwear</li>
             </a>
           </Link>
           <Link href={"/Shorts"}>
             <a>
-              <li>Shorts</li>
+              <li className="text-l">Shorts</li>
             </a>
           </Link>
           <Link href={"/hoodies"}>
             <a>
-              <li>Hoodies</li>
+              <li className="text-l">Hoodies</li>
             </a>
           </Link>
         </ul>
