@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 const Orders = () => {
      const router = useRouter();
      useEffect(() => {
-         if (localStorage.getItem("token") === null) {
-             router.push("/login");
-       }
-    }, [router, router.query]);
+      if (!localStorage.getItem("token")) {
+        router.push("/");
+      }
+    });
 
   return (
     <div>
