@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
   useEffect(() => {
+    console.log("route changed")
     router.events.on("routeChangeStart",()=>{
       setProgress(40)
     })

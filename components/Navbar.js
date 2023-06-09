@@ -36,7 +36,7 @@ const Navbar = ({
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-white z-10">
+    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-green-100 z-10">
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -51,7 +51,7 @@ const Navbar = ({
       />
       <div className="logo m-2 flex flex-col justify-center items-center">
         <Link href={"/"}>
-          <Image src="/logo.png" width={50} height={50} alt="" />
+          <Image src="/main.png" width={50} height={60} alt="" />
         </Link>
         <p className="text-bold"></p>
       </div>
