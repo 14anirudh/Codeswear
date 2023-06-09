@@ -59,7 +59,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            <Link href={"/Hoodies"}>
+            <Link href={"/hoodies"}>
               <div className="bg-[url('https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1669136361_4368029.jpg?format=webp&w=360&dpr=1.5')] bg-center bg-cover bg-no-repeat xl:w-1/2 md:w-1/2 p-2 m-1 rounded-lg transition ease-out duration-300 hover:scale-95">
                 <div className="border border-gray-200 p-6 rounded-lg">
                   <div className="w-10 h-10 inline-flex items-center justify-center rounded-full  mb-4"></div>
