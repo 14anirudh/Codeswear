@@ -10,17 +10,17 @@ function MyApp({ Component, pageProps }) {
   const [subTotal, setSubTotal] = useState(0);
   const [user, setUser] = useState({ value: null });
   const [key, setKey] = useState(0);
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(0);
 
   const router = useRouter();
   useEffect(() => {
-    console.log("route changed")
-    router.events.on("routeChangeStart",()=>{
-      setProgress(40)
-    })
-    router.events.on("routeChangeComplete",()=>{
-      setProgress(100)
-    })
+    console.log("route changed");
+    router.events.on("routeChangeStart", () => {
+      setProgress(40);
+    });
+    router.events.on("routeChangeComplete", () => {
+      setProgress(100);
+    });
     try {
       if (localStorage.getItem("cart")) {
         setCart(JSON.parse(localStorage.getItem("cart")));
@@ -54,12 +54,12 @@ function MyApp({ Component, pageProps }) {
     setSubTotal(subtotal);
   };
 
-  const addToCart = (itemCode, qty, price, name, size, variant) => {
+  const addToCart = (itemCode, qty, price, name, size, variant, priceId) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty;
     } else {
-      newCart[itemCode] = { qty: 1, price, name, size, variant };
+      newCart[itemCode] = { qty: 1, price, name, size, variant, priceId };
     }
     setCart(newCart);
 
@@ -72,15 +72,23 @@ function MyApp({ Component, pageProps }) {
     console.log("cart cleared");
   };
 
-  const buyNow = (itemCode, qty, price, name, size, variant) => {
+  const buyNow = (itemCode, qty, price, name, size, variant, priceId) => {
     saveCart({});
-    let newCart = { itemCode: { qty: 1, price, name, size, variant } };
+    let newCart = { itemCode: { qty: 1, price, name, size, variant, priceId } };
     setCart(newCart);
     saveCart(newCart);
     router.push("/Checkout");
   };
 
-  const removeFromCart = (itemCode, qty, price, name, size, variant) => {
+  const removeFromCart = (
+    itemCode,
+    qty,
+    price,
+    name,
+    size,
+    variant,
+    priceId
+  ) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty - qty;
@@ -99,7 +107,7 @@ function MyApp({ Component, pageProps }) {
         waitingTime={300}
         onLoaderFinished={() => setProgress(0)}
       />
-     <Navbar
+      <Navbar
         logout={logout}
         user={user}
         key={key}
@@ -108,7 +116,7 @@ function MyApp({ Component, pageProps }) {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         subTotal={subTotal}
-      />  
+      />
       <Component
         buyNow={buyNow}
         cart={cart}

@@ -11,6 +11,7 @@ const ProductSchema = new mongoose.Schema(
     color: { type: String },
     price: { type: Number, required: true },
     availableQty: { type: Number, required: true },
+    priceId: { type: String, required: true },
   },
   { timestamps: true }
 );

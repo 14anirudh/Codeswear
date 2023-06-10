@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Slug = ({ buyNow, addToCart, product, variants }) => {
-  console.log(product,variants);
+  console.log(product);
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -275,14 +275,30 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
                 <button
                   className="flex ml-6 md:ml-14 text-sm text-white bg-indigo-500 border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded"
                   onClick={() => {
-                    addToCart(slug, 1, product.price, product.title, color, size);
+                    addToCart(
+                      slug,
+                      1,
+                      product.price,
+                      product.title,
+                      color,
+                      size,
+                      product.priceId
+                    );
                   }}
                 >
                   Add to Cart
                 </button>
                 <button
                   onClick={() =>
-                    buyNow(slug, 1, product.price, product.title, size, color)
+                    buyNow(
+                      slug,
+                      1,
+                      product.price,
+                      product.title,
+                      size,
+                      color,
+                      product.priceId
+                    )
                   }
                   className="flex ml-4 text-white bg-indigo-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-indigo-600 rounded"
                 >
@@ -340,7 +356,10 @@ export async function getServerSideProps(context) {
   }
 
   let product = await Product.findOne({ slug: context.query.slug });
-  let variants = await Product.find({ title: product.title,category:product.category });
+  let variants = await Product.find({
+    title: product.title,
+    category: product.category,
+  });
   let colorSizeSlug = {}; //{red:{slug:'wear-the-code-xl'}}}
   for (let item of variants) {
     if (Object.keys(colorSizeSlug).includes(item.color)) {
