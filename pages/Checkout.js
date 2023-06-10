@@ -5,12 +5,46 @@ import {
   AiFillPlusCircle,
   AiFillMinusCircle,
 } from "react-icons/ai";
-import { checkout } from "../checkout";
+import { loadStripe } from "@stripe/stripe-js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+async function checkout({ lineItems }) {
+  let stripePromise = null;
+
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+    }
+    return stripePromise;
+  };
+
+  const stripe = await getStripe();
+
+  await stripe.redirectToCheckout({
+    mode: "payment",
+    lineItems,
+    successUrl: `${window.location.origin}/Orders`,
+    cancelUrl: window.location.origin,
+  });
+
+}
 
 const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
   console.log(cart);
   return (
     <div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <section className="text-gray-600 body-font relative lg:mx-24 md:mx">
         <div className="container px-5 py-12 mx-auto">
           <div className="flex flex-col w-full">

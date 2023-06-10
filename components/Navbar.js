@@ -81,7 +81,7 @@ const Navbar = ({
       </div>
 
       <div className="cart absolute right-5 top-4 cursor-pointer flex items-center ">
-        <a
+        <span
           onMouseOver={() => {
             setDropDown(true);
           }}
@@ -120,7 +120,7 @@ const Navbar = ({
           {user.value && (
             <HiUserCircle className=" text-3xl md:text-5xl mx-4" />
           )}
-        </a>
+        </span>
         {!user.value && (
           <Link href={"/login"}>
             <a>
