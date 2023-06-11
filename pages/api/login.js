@@ -18,16 +18,16 @@ const handler = async (req, res) => {
   }
 
   if (req.method === "POST") {
-    console.log(req.body);
+
     let user = await User.findOne({ email: req.body.email });
-    const bytes = CryptoJS.AES.decrypt(user.password, "secret");
-    console.log(bytes.toString(CryptoJS.enc.Utf8));
+    const bytes = CryptoJS.AES.decrypt(user.password,process.env.AES_SECRET);
+  
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
     if (user) {
       if (req.body.email == user.email && req.body.password == originalText) {
         var token = jwt.sign(
           { email: user.email, name: user.name },
-          "jwtsecret",
+          process.env.JWT_SECRET,
           { expiresIn: "24h" }
         );
         res.status(200).json({ Success: "success", token });

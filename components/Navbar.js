@@ -49,38 +49,38 @@ const Navbar = ({
         pauseOnHover
         theme="dark"
       />
-      <div className="logo m-2 flex flex-col justify-center items-center">
+      <div className="logo object-contain mx-2 my-1 flex flex-col justify-center items-center">
         <Link href={"/"}>
           <Image src="/main.png" width={50} height={60} alt="" />
         </Link>
-        <p className="text-bold"></p>
+        <span className="text-xs font-['Tourney']">RADAGAST</span>
       </div>
       <div className="nav py-2">
         <ul className="flex items-center space-x-6 font-bold mx-5">
           <Link href={"/Tshirts"}>
             <a>
-              <li className="text-l">Tshirts</li>
+              <li className="text-lg">Tshirts</li>
             </a>
           </Link>
           <Link href={"/Footwear"}>
             <a>
-              <li className="text-l">Footwear</li>
+              <li className="text-lg">Footwear</li>
             </a>
           </Link>
           <Link href={"/Shorts"}>
             <a>
-              <li className="text-l">Shorts</li>
+              <li className="text-lg">Shorts</li>
             </a>
           </Link>
           <Link href={"/hoodies"}>
             <a>
-              <li className="text-l">Hoodies</li>
+              <li className="text-lg">Hoodies</li>
             </a>
           </Link>
         </ul>
       </div>
 
-      <div className="cart absolute right-5 top-4 cursor-pointer flex items-center ">
+      <div className="cart absolute right-5 top-5 cursor-pointer flex items-center ">
         <span
           onMouseOver={() => {
             setDropDown(true);
@@ -102,17 +102,17 @@ const Navbar = ({
               <ul className="flex flex-col items-center space-y-2">
                 <Link href={"/Account"}>
                   <a>
-                    <li className="text-l text-white">My Account</li>
+                    <li className="text-lg text-white">My Account</li>
                   </a>
                 </Link>
                 <Link href={"/Orders"}>
                   <a>
-                    <li className="text-l text-white">Orders</li>
+                    <li className="text-lg text-white">Orders</li>
                   </a>
                 </Link>
 
                 <a onClick={logout}>
-                  <li className="text-l text-white">Logout</li>
+                  <li className="text-lg text-white">Logout</li>
                 </a>
               </ul>
             </div>

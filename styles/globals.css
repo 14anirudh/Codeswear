@@ -5,3 +5,15 @@
 body{
     overflow-x: hidden;
 }
+
+.checkout-form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-evenly;
+}
+@media (max-width: 640px) { 
+    .checkout-form{
+        display: flex;
+        flex-direction: column;
+    }
+}
