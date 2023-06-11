@@ -36,7 +36,7 @@ const Navbar = ({
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 bg-green-100 z-10">
+    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl z-10">
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -59,22 +59,30 @@ const Navbar = ({
         <ul className="flex items-center space-x-6 font-bold mx-5">
           <Link href={"/Tshirts"}>
             <a>
-              <li className="text-lg">Tshirts</li>
+              <li className="text-lg text-[#626262] hover:text-black">
+                Tshirts
+              </li>
             </a>
           </Link>
           <Link href={"/Footwear"}>
             <a>
-              <li className="text-lg">Footwear</li>
+              <li className="text-lg text-[#626262] hover:text-black">
+                Footwear
+              </li>
             </a>
           </Link>
           <Link href={"/Shorts"}>
             <a>
-              <li className="text-lg">Shorts</li>
+              <li className="text-lg text-[#626262] hover:text-black">
+                Shorts
+              </li>
             </a>
           </Link>
           <Link href={"/hoodies"}>
             <a>
-              <li className="text-lg">Hoodies</li>
+              <li className="text-lg text-[#626262] hover:text-black">
+                Hoodies
+              </li>
             </a>
           </Link>
         </ul>
@@ -124,7 +132,7 @@ const Navbar = ({
         {!user.value && (
           <Link href={"/login"}>
             <a>
-              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-sm text-white bg-black border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-white py-2 px-3 md:px-6 focus:outline-none rounded text-lg bg-black border-2 border-transparent hover:border-pink-500">
                 Login
               </button>
             </a>

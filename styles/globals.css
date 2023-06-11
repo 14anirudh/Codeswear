@@ -8,12 +8,12 @@ body{
 
 .checkout-form{
     display: flex;
-    flex-direction: row-reverse;
     justify-content:space-evenly;
+    margin-right: 10px;
 }
 @media (max-width: 640px) { 
     .checkout-form{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
