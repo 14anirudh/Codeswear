@@ -11,14 +11,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { checkout } from "./api/checkout";
 
 const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [pincode, setPincode] = useState('');
-  const[disabled, setDisabled] = useState(true);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [disabled, setDisabled] = useState(true);
 
   const handleChange = (e) => {
     if (e.target.name === "name") {
@@ -32,11 +32,16 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
     } else if (e.target.name === "pincode") {
       setPincode(e.target.value);
     }
-    if(name.length>3 && phone.length>3 && email.length>3 && address.length>3 && pincode.length>3){
-      setDisabled(false)
-    }
-    else{
-      setDisabled(true)
+    if (
+      name.length > 3 &&
+      phone.length > 3 &&
+      email.length > 3 &&
+      address.length > 3 &&
+      pincode.length > 3
+    ) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
     }
   };
 
@@ -168,7 +173,8 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
                       id="city"
                       name="city"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      readOnly={true}/>
+                      // readOnly={true}
+                    />
                   </div>
                 </div>
                 <div className="p-2 w-1/3">
@@ -186,7 +192,8 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
                       id="state"
                       name="state"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
-                      readOnly={true} />
+                      // readOnly={true}
+                    />
                   </div>
                 </div>
               </div>
@@ -277,8 +284,15 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
                         price: cart[k].priceId, // Replace with the actual price ID
                         quantity: cart[k].qty,
                       }));
-                       console.log(lineItems);
-                      checkout({ lineItems });
+                      console.log(lineItems);
+                      checkout({
+                        lineItems,
+                        email: email,
+                        name,
+                        phone,
+                        address,
+                        pincode,
+                      });
                     }}
                     className=" text-white bg-indigo-500 border-0 py-2 px-8 hover:bg-indigo-600 rounded text-lg my-4 disabled:bg-indigo-300"
                     disabled={disabled}

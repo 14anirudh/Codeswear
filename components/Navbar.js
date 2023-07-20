@@ -36,7 +36,7 @@ const Navbar = ({
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl z-10">
+    <div className="flex flex-col md:flex-row md:justify-start justify-between items-center shadow-xl sticky top-0 z-10">
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -49,7 +49,7 @@ const Navbar = ({
         pauseOnHover
         theme="dark"
       />
-      <div className="logo object-contain mx-2 my-1 flex flex-col justify-center items-center">
+      <div className="logo object-contain mx-2 my-1 flex flex-col justify-center items-center ">
         <Link href={"/"}>
           <Image src="/main.png" width={50} height={60} alt="" />
         </Link>

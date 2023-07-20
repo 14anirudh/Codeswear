@@ -2,14 +2,33 @@ import React, { useEffect } from "react";
 import mongoose from "mongoose";
 import Order from "../models/Order";
 import { useRouter } from "next/router";
+import queryString from "query-string";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { fetchPaymentDetails } from "../pages/api/payment-intent";
 
 const Orders = () => {
-     const router = useRouter();
-     useEffect(() => {
-      if (!localStorage.getItem("token")) {
-        router.push("/");
+  const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      router.push("/");
+    } else {
+      const { session_id } = queryString.parse(window.location.search);
+
+      if (session_id) {
+        fetchPaymentDetails(session_id)
+          .then((paymentDetails) => {
+            console.log(paymentDetails);
+            toast.success("Payment successful!");
+          })
+          .catch((error) => {
+            console.error("Failed to fetch paymentnn details:", error);
+            toast.error("Failed to fetch payment details.");
+          });
       }
-    });
+    }
+  }, [queryString]);
+
 
   return (
     <div>
