@@ -28,6 +28,7 @@ const Login = () => {
     });
     let response = await res.json();
     console.log(response);
+    console.log(response.Success)
 
     setPassword("");
     setEmail("");
