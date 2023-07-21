@@ -59,7 +59,7 @@ const Forgot = () => {
         </form>
         <p className="text-center text-black my-4">
           Don&apos;t have an account?
-          <Link href={"/SignUp"}>
+          <Link href={"/signup"}>
             <a className="border-b border-grey-dark text-blue-600">Sign Up</a>
           </Link>
         </p>
