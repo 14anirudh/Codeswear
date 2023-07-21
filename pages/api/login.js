@@ -4,20 +4,20 @@ var CryptoJS = require("crypto-js");
 var jwt = require("jsonwebtoken");
 
 const handler = async (req, res) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    // "https://codeswear-gamma.vercel.app"
-    "https://radagast.vercel.app.app"
+  // res.setHeader(
+  //   "Access-Control-Allow-Origin",
+  //   // "https://codeswear-gamma.vercel.app"
+  //   "https://radagast.vercel.app.app"
 
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  // );
+  // res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === "OPTIONS") {
-    // Handle preflight request
-    res.status(200).end();
-    return;
-  }
+  // if (req.method === "OPTIONS") {
+  //   // Handle preflight request
+  //   res.status(200).end();
+  //   return;
+  // }
 
   if (req.method === "POST") {
 
