@@ -12,22 +12,8 @@ const Orders = () => {
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       router.push("/");
-    } else {
-      const { session_id } = queryString.parse(window.location.search);
-
-      if (session_id) {
-        fetchPaymentDetails(session_id)
-          .then((paymentDetails) => {
-            console.log(paymentDetails);
-            toast.success("Payment successful!");
-          })
-          .catch((error) => {
-            console.error("Failed to fetch paymentnn details:", error);
-            toast.error("Failed to fetch payment details.");
-          });
-      }
-    }
-  }, [queryString]);
+    } 
+  }, []);
 
 
   return (

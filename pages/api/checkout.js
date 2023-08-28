@@ -18,6 +18,7 @@ export async function checkout({ lineItems }) {
       successUrl: `${window.location.origin}/Orders?session_id={CHECKOUT_SESSION_ID}`,
       cancelUrl: window.location.origin,
     });
+    console.log(sessionId);
 
   //intiate a order corresponding to the line items
   

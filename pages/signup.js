@@ -75,14 +75,14 @@ const SignUp = () => {
           <div className=" px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className=" text-3xl text-center">Sign up</h1>
             <p className="text-black my-2 text-center">
-              Already have an account?
+              Already have an account?&nbsp;
               <Link href={"/login"}>
                 <a className="text-blue-600 border-b border-grey-dark ">
                   Log in
                 </a>
               </Link>
             </p>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" method="POST" onSubmit={handleSubmit}>
               <input
                 onChange={handleChange}
                 value={name}
@@ -126,7 +126,7 @@ const SignUp = () => {
               >
                 Terms of Service
               </a>
-              and&nbsp;
+              &nbsp;and&nbsp;
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="#"

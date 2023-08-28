@@ -132,7 +132,7 @@ const Navbar = ({
         {!user.value && (
           <Link href={"/login"}>
             <a>
-              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-white py-2 px-3 md:px-6 focus:outline-none rounded text-lg bg-black border-2 border-transparent hover:border-pink-500">
+              <button className="flex ml-6 mr-4 mt-1 md:ml-14 text-white py-2 px-3 md:px-6 focus:outline-none rounded text-lg bg-black border-2 border-transparent hover:bg-white hover:text-black hover:border-2 border-black">
                 Login
               </button>
             </a>
