@@ -16,7 +16,7 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
     let pins = await fetch(` ${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
     let pincode = await pins.json();
     //used parse int to convert string into interger
-    if (pincode.includes(parseInt(pin))) {
+    if (Object.keys(pincode).includes(pin)) {
       setService(true);
       toast.success("We deliver to this area", {
         position: "bottom-center",
