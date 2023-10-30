@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Link from "next/link";
 import {
   AiOutlineCloseCircle,
@@ -9,8 +9,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { checkout } from "./api/checkout";
+import { useRouter } from "next/router";
 
 const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
+  const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      router.push("/");
+    } 
+  }, []);
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");

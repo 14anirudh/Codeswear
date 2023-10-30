@@ -20,8 +20,8 @@ const Orders = () => {
     <div>
       <div className="container mx-auto p-8">
         <div className="flex flex-col">
-          <h1 className="font-bold text-2xl">My Orders</h1>
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <h1 className="font-bold text-3xl underline">My Orders</h1>
+          {/* <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
               <div className="overflow-hidden">
                 <table className="min-w-full text-left text-sm font-light">
@@ -70,7 +70,8 @@ const Orders = () => {
                 </table>
               </div>
             </div>
-          </div>
+          </div> */}
+          <p className="mt-8 text-xl font-bold ">Your Order has been placed successfully!</p>  
         </div>
       </div>
     </div>

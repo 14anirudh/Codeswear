@@ -51,7 +51,7 @@ const Navbar = ({
       />
       <div className="logo object-contain mx-2 my-1 flex flex-col justify-center items-center ">
         <Link href={"/"}>
-          <Image src="/main.png" width={50} height={60} alt="" />
+          <Image src="/main.png" width={50} height={60} alt="" className="cursor-pointer"/>
         </Link>
         <span className="text-xs font-['Tourney']">RADAGAST</span>
       </div>
